@@ -14,8 +14,10 @@ pipeline{
             }
         }
         stage('Deploy'){
-            input 'Do i need to deploy?'
-            echo "deploying"
+            steps{
+                input 'Do i need to deploy?'
+                echo "deploying"
+            }
         }
     }
 }
