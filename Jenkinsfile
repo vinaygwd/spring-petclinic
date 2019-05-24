@@ -10,13 +10,14 @@ pipeline{
             steps{
                 sh 'mvn clean package'
                 junit '**/target/surefire-reports/TEST-*.xml'
-                archiveArtifacts artifacts: 'target/*.jar' , fingerprint: true
+                archiveArtifacts artifacts: 'targets/*.jar' , fingerprint: true
             }
         }
         stage('Deploy'){
             steps{
                 input 'Do i need to deploy?'
-                echo "deploying"
+                sh 'scp target/*.jar jenkins@10.160.0.4:/opt/pet'
+                sh "ssh jenkins@10.160.0.4 'nohup java -jar /opt/pet/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
             }
         }
     }
