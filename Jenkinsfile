@@ -10,8 +10,12 @@ pipeline{
             steps{
                 sh 'mvn clean package'
                 junit '**/target/surefire-reports/TEST-*.xml'
-                archiveArtifacts artifacts: 'target/*.jar' , fingerprint: true
+                archiveArtifacts artifacts: 'targets/*.jar' , fingerprint: true
             }
+        }
+        stage('Deploy'){
+            input 'Do i need to deploy?'
+            echo "deploying"
         }
     }
 }
