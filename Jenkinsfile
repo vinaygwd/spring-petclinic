@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent java
     stages{
         stage('SCM'){
             steps{
