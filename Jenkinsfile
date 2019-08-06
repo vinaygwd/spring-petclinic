@@ -1,7 +1,7 @@
 pipeline{
-    agent java
+    agent any
     stages{
-        stage('SCM'){
+        stage('SCM'){ 
             steps{
                 git 'https://github.com/vinaygwd/spring-petclinic.git'
             }
