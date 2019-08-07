@@ -1,6 +1,7 @@
 pipeline{
-    agent { node { label 'java' }}
+    agent none
     stages{
+        agent { label 'java'}
         stage('SCM'){ 
             steps{
                 git 'https://github.com/vinaygwd/spring-petclinic.git'
