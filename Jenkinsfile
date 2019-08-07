@@ -2,11 +2,13 @@ pipeline{
     agent { label 'java'}
     stages{
         stage('SCM'){
+            agent { label 'java'}
             steps{
                 git 'https://github.com/vinaygwd/spring-petclinic.git'
             }
         }
         stage('Build'){
+            agent { label 'java'}
             agent{ docker 'maven:3.5-alpine'}
             steps{
                 sh 'mvn clean package'
