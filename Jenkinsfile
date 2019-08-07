@@ -8,7 +8,6 @@ pipeline{
             }
         }
         stage('Build'){
-            agent { label 'java'}
             agent{ docker 'maven:3.5-alpine'}
             steps{
                 sh 'mvn clean package'
